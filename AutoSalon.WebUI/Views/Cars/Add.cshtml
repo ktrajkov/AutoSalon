@@ -1,0 +1,57 @@
+﻿@model AutoSalon.Domain.Entities.Car
+
+<h3>@Strings.Add_New_Cars</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Brand">@Strings.Brand</label>
+                        @Html.TextBoxFor(x => x.Brand, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Brand)
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="YearOfManufacture">@Strings.Year</label>
+                        @Html.TextBoxFor(x => x.YearOfManufacture, null, new { @type = "number", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.YearOfManufacture)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Horsepower">@Strings.Power</label>
+                        @Html.TextBoxFor(x => x.Horsepower, null, new { @type = "number", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Horsepower)
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="Importer">@Strings.Importer</label>
+                        @Html.TextBoxFor(x => x.Importer, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Importer)
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="Description">@Strings.Description</label>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-default pull-right">@Strings.Save</button>
+        </div>
+    </div>   
+}
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,56 @@
+﻿@model AutoSalon.WebUI.ViewModels.CarsListViewModel
+
+<h3>@Strings.Dream_Cars</h3>
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Strings.Brand
+        </th>
+        <th>
+            @Strings.Year
+        </th>
+        <th class="text-right">
+            @Strings.Power
+        </th>
+        <th class="text-center">
+            @Strings.Importer
+        </th>
+        <th>
+            @Strings.Description
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Cars)
+    {
+        <tr>
+            <td>
+                @item.Brand
+            </td>
+            <td>
+                @item.YearOfManufacture
+            </td>
+            <td class="text-right">
+                @item.Horsepower @Strings.Horsepower_Initials
+            </td>
+            <td class="text-center">
+                @item.Importer
+            </td>
+            <td class="description">
+                @item.Description
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(function () {
+        if ("@Model.SearchedDescription" !== "") {
+            $(".description").highlight("@Model.SearchedDescription", 'highlight');
+        }
+    })
+</script>
+
+@section Scripts {
+    <script src="~/Scripts/Custom/highlight.js"></script>
+}
